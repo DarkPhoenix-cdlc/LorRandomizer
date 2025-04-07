@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Champion and Relic Selector</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Random Champion and Relic Selector</h1>
+    <button id="toggleFiltersButton" onclick="toggleFilters()">Hide Filters</button>
+    <div id="filtersContainer">
+        <div>
+            <h3>Filter Champions</h3>
+            <label>
+                <input type="radio" name="championFilter" value="all" checked onclick="filterChampions()"> All Champions
+            </label>
+            <label>
+                <input type="radio" name="championFilter" value="3stars" onclick="filterChampions()"> Only 3 Stars
+            </label>
+            <label>
+                <input type="radio" name="championFilter" value="6stars" onclick="filterChampions()"> Only 6 Stars
+            </label>
+        </div>
+        <div>
+            <h3>Filter Relics</h3>
+            <label>
+                <input type="checkbox" id="commonRelics" checked> Common Relics
+            </label>
+            <label>
+                <input type="checkbox" id="rareRelics" checked> Rare Relics
+            </label>
+            <label>
+                <input type="checkbox" id="epicRelics" checked> Epic Relics
+            </label>
+            <label>
+                <input type="checkbox" id="allowDuplicates"> Allow Duplicates
+            </label>
+        </div>
+        <div>
+            <h3>Filter Adventures</h3>
+            <label>
+                <input type="radio" name="adventureFilter" value="all" checked onclick="filterAdventures()"> All Adventures
+            </label>
+            <label>
+                <input type="radio" name="adventureFilter" value="normal" onclick="filterAdventures()"> Normal
+            </label>
+            <label>
+                <input type="radio" name="adventureFilter" value="Nightmare" onclick="filterAdventures()"> Nightmare
+            </label>
+            <label>
+                <input type="radio" name="adventureFilter" value="event" onclick="filterAdventures()"> Event
+            </label>
+        </div>
+    </div>
+    <button onclick="selectRandom()">Select Champion and Relics</button>
+    <h2 id="result"></h2>
+    <div id="championContainer">
+        <h2 id="result"></h2>
+        <img id="championImage" src="" alt="Champion Image" style="display:none;">
+        <button id="rerollChampion" onclick="rerollChampion()" style="display:none;">Reroll Champion</button>
+    </div>
+    <div id="relicImages"></div>
+    <div id="adventureContainer" style="margin-top: 20px;">
+        <h2 id="adventureResult"></h2>
+        <img id="adventureImage" src="" alt="Adventure Image" style="display:none;">
+        <p id="adventureStars"></p>
+        <button id="rerollAdventure" onclick="rerollAdventure()" style="display:none;">Reroll Adventure</button>
+    </div>
+
+   
+    <button id="toggleThemeButton" onclick="toggleTheme()" style="position: fixed; bottom: 10px; right: 10px; padding: 5px 10px; font-size: 12px; border: none; border-radius: 5px; background-color: #007bff; color: white; cursor: pointer;">Toggle Theme</button>
+</body>
+</html>

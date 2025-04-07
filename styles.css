@@ -1,0 +1,206 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    margin: 0; /* Elimina márgenes predeterminados */
+    padding: 0;
+    min-height: 100vh; /* Asegura que el fondo cubra toda la altura de la ventana */
+    background: url('https://www.transparenttextures.com/patterns/white-diamond.png'); /* Patrón de textura */
+    background-color: #f9f9f9; /* Color de fondo base */
+    background-size: cover; /* Asegura que el fondo cubra toda la pantalla */
+    color: #333; /* Texto oscuro */
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+/* Tema oscuro */
+body.dark-theme {
+    background-color: #121212; /* Fondo oscuro */
+    color: #f9f9f9; /* Texto claro */
+}
+
+body.dark-theme h1,
+body.dark-theme h2 {
+    color: #f9f9f9; /* Texto claro */
+}
+
+body.dark-theme button {
+    background-color: #444; /* Botón oscuro */
+    color: #f9f9f9; /* Texto claro */
+}
+
+body.dark-theme button:hover {
+    background-color: #666; /* Botón más claro al pasar el cursor */
+}
+
+body.dark-theme #filtersContainer {
+    background-color: #1e1e1e; /* Fondo oscuro para los filtros */
+    color: #f9f9f9; /* Texto claro */
+}
+
+body.dark-theme .relic-container {
+    background-color: #1e1e1e; /* Fondo oscuro para las reliquias */
+    color: #f9f9f9; /* Texto claro */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Sombra clara */
+}
+h1 {
+    font-size: 2.5rem;
+    color: #444;
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Azul */
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3; /* Azul más oscuro */
+}
+
+h2 {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: #555;
+}
+#championContainer,
+#adventureContainer {
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px; /* Ancho máximo */
+}
+body.dark-theme #championContainer,
+body.dark-theme #adventureContainer {
+    background-color: rgba(30, 30, 30, 0.9); /* Fondo oscuro semitransparente */
+    color: #f9f9f9; /* Texto claro */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1); /* Sombra clara */
+}
+
+/* Champion Container */
+#championContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+#championImage {
+    max-width: 200px;
+    margin-top: 10px;
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+/* Adventure Container */
+#adventureContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+}
+
+#adventureImage {
+    max-width: 200px;
+    margin-top: 10px;
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+/* Relic Images */
+#relicImages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* Espaciado entre reliquias */
+    margin-top: 20px;
+}
+
+.relic-container {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.relic-container:hover {
+    transform: translateY(-5px); /* Efecto de elevación */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+}
+
+.relic-container img {
+    max-width: 100px;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+}
+
+/* Filters Container */
+#filtersContainer {
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    overflow: hidden;
+    max-height: 500px; /* Altura máxima cuando está visible */
+    opacity: 1; /* Totalmente visible */
+    background-color: #ffffff; /* Fondo blanco */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+    margin-bottom: 20px;
+}
+
+#filtersContainer.hidden {
+    max-height: 0; /* Altura mínima cuando está oculto */
+    opacity: 0; /* Totalmente invisible */
+}
+
+label {
+    display: block;
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        margin: 20px;
+    }
+
+    #championImage,
+    #adventureImage {
+        max-width: 150px;
+    }
+
+    .relic-container img {
+        max-width: 80px;
+    }
+}
