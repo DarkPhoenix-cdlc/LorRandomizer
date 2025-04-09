@@ -30,9 +30,9 @@ const champions = [
  { name: "Kindred", image: "Images/champions/Kindred.jpeg", hasSixStars: false },
  { name: "LeBlanc", image: "Images/champions/LeBlanc.jpeg", hasSixStars: false },
  { name: "Lee Sin", image: "Images/champions/LeeSin.jpeg", hasSixStars: false },
- { name: "Leona", image: "Images/champions/Leona.jpeg", hasSixStars: false },
+ { name: "Leona", image: "Images/champions/Leona.jpeg", hasSixStars: true },
  { name: "Lillia", image: "Images/champions/Lillia.jpeg", hasSixStars: true },
- { name: "Lux", image: "Images/champions/Lux.jpeg", hasSixStars: false },
+ { name: "Lux", image: "Images/champions/Lux.jpeg", hasSixStars: true },
  { name: "Lux: Illuminated", image: "Images/champions/LuxI.jpeg", hasSixStars: true },
  { name: "Master Yi", image: "Images/champions/MasterYi.jpeg", hasSixStars: false },
  { name: "Miss Fortune", image: "Images/champions/MissFortune.jpeg", hasSixStars: true },
@@ -70,6 +70,8 @@ const champions = [
  { name: "Aurelion Sol", image: "Images/champions/AurelionSol.jpeg", hasSixStars: false }
 ];
 const relics = [
+    { name: "Protectors of Demacia", image: "Images/relics/protectors.png", rarity: "common" },
+    { name: "Shield of Daybreak", image: "Images/relics/shield_L.png", rarity: "common" },
     { name: "Armordillo Shell", image: "Images/relics/armodillo.webp", rarity: "common" },
     { name: "Banshee's Veil", image: "Images/relics/banshee.webp", rarity: "common" },
     { name: "Dreams Of Yordles", image: "Images/relics/dream.webp", rarity: "common" },
@@ -220,25 +222,7 @@ function filterAdventures() {
     adventureImage.style.display = "block";
     document.getElementById("adventureStars").innerText = `Stars: ${randomAdventure.stars}`;
 }
-function filterChampions() {
-    const filterValue = document.querySelector('input[name="championFilter"]:checked').value;
 
-    let filteredChampions;
-    if (filterValue === "all") {
-        filteredChampions = champions; // Mostrar todos los campeones
-    } else if (filterValue === "3stars") {
-        filteredChampions = champions.filter(champion => !champion.hasSixStars); // Solo campeones sin 6 estrellas
-    } else if (filterValue === "6stars") {
-        filteredChampions = champions.filter(champion => champion.hasSixStars); // Solo campeones con 6 estrellas
-    }
-
-    // Actualiza la selección de campeón con los campeones filtrados
-    const randomChampion = getRandomItem(filteredChampions);
-    document.getElementById("result").innerText = `Champion: ${randomChampion.name}`;
-    const championImage = document.getElementById("championImage");
-    championImage.src = randomChampion.image;
-    championImage.style.display = "block";
-}
 function rerollAdventure() {
     const randomAdventure = getRandomItem(adventures);
     document.getElementById("adventureResult").innerText = `Adventure: ${randomAdventure.name}`;
@@ -276,21 +260,30 @@ function rerollRelic(index) {
     relicContainer.querySelector("img").alt = newRelic.name; // Actualiza el atributo alt
     relicContainer.querySelector("p").textContent = newRelic.name; // Actualiza el nombre de la reliquia
 }
+// Variable global para almacenar los campeones filtrados
+let filteredChampions = champions; // Por defecto, todos los campeones
 
-function selectRandom() {
-    // Filtrar campeones según el filtro seleccionado
+function filterChampions() {
     const filterValue = document.querySelector('input[name="championFilter"]:checked').value;
 
-    let filteredChampions;
     if (filterValue === "all") {
-        filteredChampions = champions;
+        filteredChampions = champions; // Mostrar todos los campeones
     } else if (filterValue === "3stars") {
-        filteredChampions = champions.filter(champion => !champion.hasSixStars);
+        filteredChampions = champions.filter(champion => !champion.hasSixStars); // Solo campeones sin 6 estrellas
     } else if (filterValue === "6stars") {
-        filteredChampions = champions.filter(champion => champion.hasSixStars);
+        filteredChampions = champions.filter(champion => champion.hasSixStars); // Solo campeones con 6 estrellas
     }
 
-    // Seleccionar un campeón aleatorio
+    // Actualizar la interfaz para reflejar el filtro aplicado
+    const randomChampion = getRandomItem(filteredChampions);
+    document.getElementById("result").innerText = `Champion: ${randomChampion.name}`;
+    const championImage = document.getElementById("championImage");
+    championImage.src = randomChampion.image;
+    championImage.style.display = "block";
+}
+
+function selectRandom() {
+    // Seleccionar un campeón aleatorio de la lista filtrada
     const randomChampion = getRandomItem(filteredChampions);
     document.getElementById("result").innerText = `Champion: ${randomChampion.name}`;
     const championImage = document.getElementById("championImage");
