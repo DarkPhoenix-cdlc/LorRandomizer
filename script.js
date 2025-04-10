@@ -70,8 +70,8 @@ const champions = [
  { name: "Aurelion Sol", image: "Images/champions/AurelionSol.jpeg", hasSixStars: false }
 ];
 const relics = [
-    { name: "Protectors of Demacia", image: "Images/relics/protectors.png", rarity: "common" },
-    { name: "Shield of Daybreak", image: "Images/relics/shield_L.png", rarity: "common" },
+    { name: "Protectors of Demacia", image: "Images/relics/protectors.webp", rarity: "epic" },
+    { name: "Shield of Daybreak", image: "Images/relics/shield_L.webp", rarity: "epic" },
     { name: "Armordillo Shell", image: "Images/relics/armodillo.webp", rarity: "common" },
     { name: "Banshee's Veil", image: "Images/relics/banshee.webp", rarity: "common" },
     { name: "Dreams Of Yordles", image: "Images/relics/dream.webp", rarity: "common" },
