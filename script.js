@@ -203,15 +203,14 @@ const adventures = [
     { name: "The Titan of the Depths", image: "Images/champions/Nautilus.jpeg", stars: 4, type: "Event" },
     { name: "The Relentless Storm", image: "Images/champions/Volibear.jpeg", stars: 5, type: "Event" },
     { name: "The Dragonsire", image: "Images/champions/Elder.jpeg", stars: 6, type: "Event" }
-];
-function filterAdventures() {
+];function filterAdventures() {
     const filterValue = document.querySelector('input[name="adventureFilter"]:checked').value;
 
     let filteredAdventures;
     if (filterValue === "all") {
-        filteredAdventures = adventures; // Mostrar todas las aventuras
+        filteredAdventures = adventures.filter(adventure => adventure.type !== "Event"); // Excluir aventuras de tipo "Event"
     } else {
-        filteredAdventures = adventures.filter(adventure => adventure.type === filterValue);
+        filteredAdventures = adventures.filter(adventure => adventure.type === filterValue && adventure.type !== "Event");
     }
 
     // Seleccionar una aventura aleatoria del filtro
@@ -222,6 +221,7 @@ function filterAdventures() {
     adventureImage.style.display = "block";
     document.getElementById("adventureStars").innerText = `Stars: ${randomAdventure.stars}`;
 }
+
 
 function rerollAdventure() {
     const randomAdventure = getRandomItem(adventures);
@@ -340,26 +340,27 @@ function selectRandom() {
         relicImagesDiv.appendChild(relicContainer);
     });
 
-    // Filtrar aventuras según el filtro seleccionado
-    const adventureFilterValue = document.querySelector('input[name="adventureFilter"]:checked').value;
+        // Filtrar aventuras según el filtro seleccionado, excluyendo "Event"
+        const adventureFilterValue = document.querySelector('input[name="adventureFilter"]:checked').value;
 
-    let filteredAdventures;
-    if (adventureFilterValue === "all") {
-        filteredAdventures = adventures;
-    } else {
-        filteredAdventures = adventures.filter(adventure => adventure.type === adventureFilterValue);
+        let filteredAdventures;
+        if (adventureFilterValue === "all") {
+            filteredAdventures = adventures.filter(adventure => adventure.type !== "Event");
+        } else {
+            filteredAdventures = adventures.filter(adventure => adventure.type === adventureFilterValue && adventure.type !== "Event");
+        }
+    
+        // Seleccionar una aventura aleatoria
+        const randomAdventure = getRandomItem(filteredAdventures);
+        document.getElementById("adventureResult").innerText = `Adventure: ${randomAdventure.name}`;
+        const adventureImage = document.getElementById("adventureImage");
+        adventureImage.src = randomAdventure.image;
+        adventureImage.style.display = "block";
+        document.getElementById("adventureStars").innerText = `Stars: ${randomAdventure.stars}`;
+    
+        // Mostrar el botón de reroll para la aventura
+        document.getElementById("rerollAdventure").style.display = "inline-block";
     }
-    // Seleccionar una aventura aleatoria
-    const randomAdventure = getRandomItem(filteredAdventures);
-    document.getElementById("adventureResult").innerText = `Adventure: ${randomAdventure.name}`;
-    const adventureImage = document.getElementById("adventureImage");
-    adventureImage.src = randomAdventure.image;
-    adventureImage.style.display = "block";
-    document.getElementById("adventureStars").innerText = `Stars: ${randomAdventure.stars}`;
-
-    // Mostrar el botón de reroll para la aventura
-    document.getElementById("rerollAdventure").style.display = "inline-block";
-}
 function toggleFilters() {
     const filtersContainer = document.getElementById("filtersContainer");
     const toggleButton = document.getElementById("toggleFiltersButton");
