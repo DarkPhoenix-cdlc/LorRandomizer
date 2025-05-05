@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TierMaker Setup</title>
+    <link rel="stylesheet" href="tiermaker.css">
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="script.js"></script>
+    <script type="module" src="tiermaker.js"></script>
+
+
+</head>
+<body>
+    <nav class="top-nav">
+        <ul class="nav-links">
+            <li><a href="./coming_soon.html">Wiki</a></li>
+            <li><a href="./tiermaker.html">TierMaker</a></li>
+            <li><a href="RandomLorPocSelector.html">Randomiser</a></li>
+        </ul>
+    </nav>
+
+    <div class="tier-setup-container">
+        <h2>Create Your Tier List</h2>
+        
+        <!-- Tier List Name Input -->
+        <label for="tierName">Tier Name:</label>
+        <input type="text" id="tierName" placeholder="Enter tier list name">
+
+        <!-- Category Selection -->
+        <h3>What is this tier list for?</h3>
+        <select id="tierCategory">
+            <option value="champions">Champions</option>
+            <option value="relics">Relics</option>
+            <option value="adventures">Adventures</option>
+        </select>
+
+       <!-- Filters (Initially Hidden) -->
+<div id="championFilters" class="filter-group">
+    <h3>Champion Filters</h3>
+    <label>
+        <input type="radio" name="tierFilter" value="all" checked> All Champions
+    </label>
+    <label>
+        <input type="radio" name="tierFilter" value="3stars"> Only 3 Stars
+    </label>
+    <label>
+        <input type="radio" name="tierFilter" value="6stars"> Only 6 Stars
+    </label>
+</div>
+
+<div id="relicFilters" class="filter-group">
+    <h3>Relic Filters</h3>
+    <label>
+        <input type="checkbox" id="commonRelics" checked> Common Relics
+    </label>
+    <label>
+        <input type="checkbox" id="rareRelics" checked> Rare Relics
+    </label>
+    <label>
+        <input type="checkbox" id="epicRelics" checked> Epic Relics
+    </label>
+</div>
+
+<div id="adventureFilters" class="filter-group">
+    <h3>Adventure Filters</h3>
+    <label>
+        <input type="radio" name="adventureFilter" value="all" checked> All Adventures
+    </label>
+    <label>
+        <input type="radio" name="adventureFilter" value="normal"> Normal
+    </label>
+    <label>
+        <input type="radio" name="adventureFilter" value="Nightmare"> Nightmare
+    </label>
+    <label>
+        <input type="radio" name="adventureFilter" value="event"> Event
+    </label>
+</div>
+
+
+        <!-- Generate Button -->
+        <button id="generateTier">Generate Tier List</button>
+
+    </div>
+    
+
+    <script src="tiermaker.js"></script>
+    <button id="toggleThemeButton" onclick="toggleTheme()" style="position: fixed; bottom: 10px; right: 10px; padding: 5px 10px; font-size: 12px; border: none; border-radius: 5px; background-color: #007bff; color: white; cursor: pointer;">Switch Theme</button>
+
+</body>
+</html>
