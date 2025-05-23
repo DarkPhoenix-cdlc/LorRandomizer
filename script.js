@@ -1,4 +1,4 @@
-// script.js
+
 import { champions } from './champions.js'; 
 import { relics } from './relics.js';
 import { adventures } from './adventures.js';
@@ -12,7 +12,6 @@ function filterAdventures() {
         filteredAdventures = adventures.filter(adventure => adventure.type === filterValue && adventure.type !== "Event");
     }
 
-    // Seleccionar una aventura aleatoria del filtro
     const randomAdventure = getRandomItem(filteredAdventures);
     document.getElementById("adventureResult").innerText = `Adventure: ${randomAdventure.name}`;
     const adventureImage = document.getElementById("adventureImage");
@@ -55,25 +54,23 @@ function rerollRelic(index) {
 
     const newRelic = getRandomItem(filteredRelics);
     const relicContainer = document.getElementById(`relic-${index}`);
-    relicContainer.querySelector("img").src = newRelic.image; // Actualiza la imagen de la reliquia
-    relicContainer.querySelector("img").alt = newRelic.name; // Actualiza el atributo alt
-    relicContainer.querySelector("p").textContent = newRelic.name; // Actualiza el nombre de la reliquia
+    relicContainer.querySelector("img").src = newRelic.image;
+    relicContainer.querySelector("img").alt = newRelic.name;
+    relicContainer.querySelector("p").textContent = newRelic.name;
 }
-// Variable global para almacenar los campeones filtrados
-let filteredChampions = champions; // Por defecto, todos los campeones
+let filteredChampions = champions;
 
 function filterChampions() {
     const filterValue = document.querySelector('input[name="championFilter"]:checked').value;
 
     if (filterValue === "all") {
-        filteredChampions = champions; // Mostrar todos los campeones
+        filteredChampions = champions; 
     } else if (filterValue === "3stars") {
-        filteredChampions = champions.filter(champion => !champion.hasSixStars); // Solo campeones sin 6 estrellas
+        filteredChampions = champions.filter(champion => !champion.hasSixStars);
     } else if (filterValue === "6stars") {
-        filteredChampions = champions.filter(champion => champion.hasSixStars); // Solo campeones con 6 estrellas
+        filteredChampions = champions.filter(champion => champion.hasSixStars);
     }
 
-    // Actualizar la interfaz para reflejar el filtro aplicado
     const randomChampion = getRandomItem(filteredChampions);
     document.getElementById("result").innerText = `Champion: ${randomChampion.name}`;
     const championImage = document.getElementById("championImage");
@@ -82,17 +79,14 @@ function filterChampions() {
 }
 
 function selectRandom() {
-    // Seleccionar un campeón aleatorio de la lista filtrada
     const randomChampion = getRandomItem(filteredChampions);
     document.getElementById("result").innerText = `Champion: ${randomChampion.name}`;
     const championImage = document.getElementById("championImage");
     championImage.src = randomChampion.image;
     championImage.style.display = "block";
 
-    // Mostrar el botón de reroll para el campeón
     document.getElementById("rerollChampion").style.display = "inline-block";
 
-    // Filtrar reliquias según los checkboxes seleccionados
     const allowCommon = document.getElementById("commonRelics").checked;
     const allowRare = document.getElementById("rareRelics").checked;
     const allowEpic = document.getElementById("epicRelics").checked;
@@ -105,7 +99,6 @@ function selectRandom() {
         return false;
     });
 
-    // Si no se permiten duplicados, elimina duplicados al seleccionar
     let selectedRelics;
     if (allowDuplicates) {
         selectedRelics = filteredRelics.sort(() => 0.5 - Math.random()).slice(0, 3);
@@ -113,9 +106,8 @@ function selectRandom() {
         selectedRelics = [...new Set(filteredRelics)].sort(() => 0.5 - Math.random()).slice(0, 3);
     }
 
-    // Mostrar las reliquias seleccionadas
     const relicImagesDiv = document.getElementById("relicImages");
-    relicImagesDiv.innerHTML = ""; // Limpiar las reliquias anteriores
+    relicImagesDiv.innerHTML = "";
 
     selectedRelics.forEach((relic, index) => {
         const relicContainer = document.createElement("div");
@@ -139,7 +131,6 @@ function selectRandom() {
         relicImagesDiv.appendChild(relicContainer);
     });
 
-        // Filtrar aventuras según el filtro seleccionado, excluyendo "Event"
         const adventureFilterValue = document.querySelector('input[name="adventureFilter"]:checked').value;
 
         let filteredAdventures;
@@ -149,7 +140,6 @@ function selectRandom() {
             filteredAdventures = adventures.filter(adventure => adventure.type === adventureFilterValue && adventure.type !== "Event");
         }
     
-        // Seleccionar una aventura aleatoria
         const randomAdventure = getRandomItem(filteredAdventures);
         document.getElementById("adventureResult").innerText = `Adventure: ${randomAdventure.name}`;
         const adventureImage = document.getElementById("adventureImage");
@@ -157,7 +147,6 @@ function selectRandom() {
         adventureImage.style.display = "block";
         document.getElementById("adventureStars").innerText = `Stars: ${randomAdventure.stars}`;
     
-        // Mostrar el botón de reroll para la aventura
         document.getElementById("rerollAdventure").style.display = "inline-block";
     }
 function toggleFilters() {
@@ -176,19 +165,15 @@ function toggleTheme() {
     const body = document.body;
     const button = document.getElementById("toggleThemeButton");
 
-    // Alternar entre temas
     body.classList.toggle("dark-theme");
 
-    // Guardar tema en Local Storage
     const currentTheme = body.classList.contains("dark-theme") ? "dark" : "light";
     localStorage.setItem("theme", currentTheme);
 
-    // Cambiar color del botón
     const newButtonColor = body.classList.contains("dark-theme") ? "#ffcc00" : "#007bff";
     button.style.backgroundColor = newButtonColor;
     localStorage.setItem("buttonColor", newButtonColor);
 
-    // Cambiar texto del botón
     button.textContent = currentTheme === "dark" ? "Switch to Light Theme" : "Switch to Dark Theme";
 }
 

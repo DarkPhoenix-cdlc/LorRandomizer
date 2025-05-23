@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="styles.css">
     <script type="module" src="script.js"></script>
     <style>
-     /* Estilos base del cuerpo */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    padding-top: 50px; /* Ajuste para el menú fijo */
+    padding-top: 50px;
 }
 
-/* Barra de navegación */
+
 nav {
     background-color: #007bff;
     color: white;
@@ -55,7 +55,7 @@ header {
     margin-bottom: 20px;
 }
 
-/* Contenedor de tiers */
+
 .tier-container {
     display: flex;
     flex-direction: column;
@@ -63,7 +63,7 @@ header {
     padding: 20px;
 }
 
-/* Filas de tiers */
+
 .tier-row {
     display: flex;
     align-items: center;
@@ -76,7 +76,7 @@ header {
     position: relative;
 }
 
-/* Edición de título de tiers */
+
 .tier-row h2 {
     margin: 0;
     width: 100px;
@@ -89,7 +89,7 @@ header {
     padding: 2px;
 }
 
-/* Botón de eliminar tier */
+
 .tier-row .delete-tier-button {
     position: absolute;
     right: 10px;
@@ -107,7 +107,7 @@ header {
     background-color: #cc0000;
 }
 
-/* Contenedor de cartas */
+
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -115,11 +115,11 @@ header {
     justify-content: center;
 }
 
-/* Estilos específicos para tarjetas */
+
 .card {
     padding: 12px;
-    background-color: #000; /* Fondo negro permanente */
-    color: white; /* Texto blanco siempre */
+    background-color: #000;
+    color: white;
     border: 1px solid #ccc;
     border-radius: 5px;
     cursor: grab;
@@ -128,20 +128,20 @@ header {
     transition: background-color 0.3s, transform 0.2s;
 }
 
-/* Efecto visual al arrastrar */
+
 .card.dragging {
     opacity: 0.5;
     transform: scale(1.1);
 }
 
-/* Estilos de imagen dentro de la tarjeta */
+
 .card img {
     width: 100%;
     height: auto;
     border-radius: 5px;
 }
 
-/* Botón para agregar tier */
+
 .add-tier-button {
     margin: 20px;
     padding: 12px 20px;
@@ -157,7 +157,7 @@ header {
     background-color: #0056b3;
 }
 
-/* Botón de alternar tema */
+
 #toggleThemeButton {
     position: fixed;
     bottom: 10px;
@@ -176,7 +176,7 @@ header {
     background-color: #0056b3;
 }
 
-/* Contenedor de cartas para las reliquias */
+
 #AdventuresCardsContainer {
     display: flex;
     flex-wrap: wrap;
@@ -185,7 +185,6 @@ header {
     justify-content: center;
 }
 
-/* Aplicación de modo oscuro sin afectar las tarjetas */
 .dark-theme-card {
     background-color: #333;
     color: white;
@@ -194,7 +193,6 @@ header {
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav class="top-nav">
         <ul class="nav-links">
             <li><a href="./coming_soon.html">Wiki</a></li>
@@ -209,7 +207,6 @@ header {
     <main>
         <button class="add-tier-button" id="addTierButton">Add Tier</button>
         <div class="tier-container" id="tierContainer">
-            <!-- Tier rows -->
             <div class="tier-row" data-tier="S">
                 <h2 contenteditable="true">S</h2>
                 <div class="card-container"></div>
@@ -232,20 +229,16 @@ header {
             </div>
         </div>
 
-        <!-- Initial cards -->
         <div class="card-container" id="RelicCardsContainer"></div>
     </main>
 
-    <!-- Theme Toggle Button -->
     <button id="toggleThemeButton" onclick="toggleTheme()">Switch Theme</button>
 
     <script type="module">
   import { adventures } from './adventures.js';
 
-// Display the title saved in localStorage
 document.getElementById("tierTitle").textContent = localStorage.getItem("tierTitle") || "adventures Tier List";
 
-// Populate Relic cards
 const adventuresCardsContainer = document.getElementById("RelicCardsContainer");
 
 adventures.forEach(relic => {
@@ -264,7 +257,6 @@ adventures.forEach(relic => {
     card.appendChild(name);
     adventuresCardsContainer.appendChild(card);
 
-    // Add drag and drop functionality
     card.addEventListener("dragstart", () => {
         card.classList.add("dragging");
     });
@@ -274,7 +266,6 @@ adventures.forEach(relic => {
     });
 });
 
-// Drag and Drop functionality for tiers
 const rows = document.querySelectorAll(".tier-row");
 
 rows.forEach(row => {
@@ -285,7 +276,6 @@ rows.forEach(row => {
     });
 });
 
-// Add new tiers dynamically
 const tierContainer = document.getElementById("tierContainer");
 const addTierButton = document.getElementById("addTierButton");
 
@@ -305,7 +295,6 @@ addTierButton.addEventListener("click", () => {
     const cardContainer = document.createElement("div");
     cardContainer.classList.add("card-container");
 
-    // Apply dark mode if active
     if (document.body.classList.contains("dark-theme")) {
         newTierRow.classList.add("dark-theme-card");
         cardContainer.classList.add("dark-theme-card");
@@ -339,7 +328,6 @@ function toggleTheme() {
 }
 
 
-// Add delete functionality to existing tiers
 document.querySelectorAll(".delete-tier-button").forEach(button => {
     button.addEventListener("click", e => {
         e.target.parentElement.remove();

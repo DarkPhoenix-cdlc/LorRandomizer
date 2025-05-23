@@ -1,4 +1,3 @@
-// Redirigir según la categoría seleccionada y mostrar el título en la página correspondiente
 document.addEventListener("DOMContentLoaded", () => {
     const generateButton = document.getElementById("generateTier");
 
@@ -8,14 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const tierCategory = document.getElementById("tierCategory").value;
 
             if (!tierName || !tierCategory) {
-                alert("⚠️ Por favor ingresa un nombre y selecciona una categoría.");
+                alert("⚠️ Please fill in all fields.");
                 return;
             }
 
-            // Guardar el título en localStorage para usarlo en la página correspondiente
             localStorage.setItem("tierTitle", tierName);
 
-            // Redirigir a la página correspondiente
             switch (tierCategory) {
                 case "champions":
                     window.location.href = "./championtier.html";
@@ -27,10 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     window.location.href = "./adventurestier.html";
                     break;
                 default:
-                    alert("⚠️ Categoría no válida.");
+                    alert("⚠️ Invalid category selected.");
             }
         });
     } else {
-        console.error("❌ Botón 'generateTier' no encontrado. Verifica el ID en el HTML.");
+        console.error("❌ Generate button not found.");
     }
 });
