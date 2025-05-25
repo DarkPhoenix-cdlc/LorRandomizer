@@ -1,5 +1,6 @@
 export const champions = [
     { name: "Aatrox", image: "Images/champions/Aatrox.jpeg", hasSixStars: true },
+    {name:"Ambessa", image: "Images/champions/Ambessa.jpeg", hasSixStars: true},
     { name: "Akshan", image: "Images/champions/Akshan.jpeg", hasSixStars: true },
     { name: "Ahri", image: "Images/champions/Ahri.jpeg", hasSixStars: true },
     { name: "Annie", image: "Images/champions/Annie.jpeg", hasSixStars: false },
